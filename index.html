@@ -17,24 +17,26 @@
             <div class="col-lg-4 bg-light">
                 <h4>Search for a City:</h4>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="San Franciso, CA" aria-label="city" aria-describedby="button-search">
+                    <input type="text" class="form-control" placeholder="San Franciso" aria-label="city" aria-describedby="button-search" id="input-field">
                     <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
                 </div>
-                <div class="d-grid gap-2 m-4">
+                <div class="d-grid gap-2 m-4" id="cityHistory">
                     <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
                     <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
                     <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
                 </div>
             </div>
-            <div class="col-lg-8 bg-transparent">
+            <div class="col-lg-8 bg-transparent" id="selected-city">
                 <div class="container">
 
                     <div class="card bg-dark text-white m-3">
                         <img src="./assets/images/thunderstorm.jpeg" class="card-img" alt="...">
                         <div class="card-img-overlay">
                           <h5 class="card-title">Card title</h5>
-                          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                          <p class="card-text">Last updated 3 mins ago</p>
+                          <p class="card-text">Temperature: </p>
+                          <p class="card-text">Humidity: </p>
+                          <p class="card-text">Wind Speed: </p>
+                          <p class="card-text">UV Index : </p>
                         </div>
                       </div>
 
@@ -44,7 +46,7 @@
                     <div class="card-group m-3">
 
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
@@ -53,7 +55,7 @@
                         </div>
 
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
@@ -62,7 +64,7 @@
                         </div>
 
                         <div class="card">
-                          <img src="..." class="card-img-top" alt="...">
+                          <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
                           <div class="card-body">
                             <h5 class="card-title">Card title</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
@@ -71,7 +73,7 @@
                         </div>
 
                         <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">Card title</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
@@ -80,7 +82,7 @@
                         </div>
 
                         <div class="card">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
                             <div class="card-body">
                               <h5 class="card-title">Card title</h5>
                               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
@@ -94,4 +96,7 @@
         </div>
     </main>
 </body>
+
+<script src="./assets/js/script.js"></script>
+
 </html>
