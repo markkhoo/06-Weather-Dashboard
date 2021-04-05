@@ -1,8 +1,6 @@
 // Pointers
 var searchButton = document.getElementById('button-search');
 
-
-
 // Card Image Function
 function imageWeather (icon) {
     if (icon == "01d" || icon == "01n") {
@@ -34,16 +32,19 @@ init();
 
 // WORK
 searchButton.addEventListener('click', function getCity() {
+
     // Pointers (locally)
     var cityTitle = document.getElementById('city-date');
     var currentImg = document.getElementById('current-weather-image');
     var inputField = document.getElementById('input-field').value;
 
+    // Fetch Sequence for Main Weather
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputField + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
 
     fetch(requestUrl)
     .then(function(response) {
-        console.log(response);
+
+        // Status check for inputed city
         if (response.status == 200) {
             document.getElementById("selected-city").style.setProperty("visibility", "initial");
             return response.json();
@@ -62,8 +63,7 @@ searchButton.addEventListener('click', function getCity() {
         var mainHumidity = data.main.humidity;
         var mainWind = data.wind.speed;
 
-        console.log(data);
-
+        // Fetch sequence for UV Index
         var UVUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + currentLat + "&lon=" + currentLon + "&appid=22bb6e2db366aab8539ac22df7b32d3a";
         
         fetch(UVUrl)
@@ -75,6 +75,7 @@ searchButton.addEventListener('click', function getCity() {
             var mainUV = data.current.uvi;
             document.getElementById("main-uv").innerHTML = mainUV;
 
+            // Update UVI color block
             if (mainUV <= 2) {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(67,185,30)");
 
@@ -91,16 +92,32 @@ searchButton.addEventListener('click', function getCity() {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(134,111,255)");
 
             };
+
+            // Update Html Elements
+            cityTitle.innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
+            currentImg.setAttribute("src", imageWeather(mainImg));
+            document.getElementById("main-temp").innerHTML = mainTemp;
+            document.getElementById("main-humidity").innerHTML = mainHumidity;
+            document.getElementById("main-wind").innerHTML = mainWind;
+
         });
 
-        // Update Html Elements
-        cityTitle.innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
-        currentImg.setAttribute("src", imageWeather(mainImg));
-        document.getElementById("main-temp").innerHTML = mainTemp;
-        document.getElementById("main-humidity").innerHTML = mainHumidity;
-        document.getElementById("main-wind").innerHTML = mainWind;
-    });
+        // Fetch Sequence for 5-Day Forecast
+        var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputField + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
 
+        fetch(forecastUrl)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+
+            console.log(data.list[7]);
+            console.log(data.list[15]);
+            console.log(data.list[23]);
+            console.log(data.list[31]);
+            console.log(data.list[39]);
+        });
+    });
 });
 
 
