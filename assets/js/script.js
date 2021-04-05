@@ -78,19 +78,14 @@ searchButton.addEventListener('click', function getCity() {
             // Update UVI color block
             if (mainUV <= 2) {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(67,185,30)");
-
             } else if (mainUV <= 5) {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(252,199,33)");
-
             } else if (mainUV <= 7) {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(251,116,27)");
-
             } else if (mainUV <= 10) {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(248,17,22)");
-
             } else {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(134,111,255)");
-
             };
 
             // Update Html Elements
@@ -156,5 +151,3 @@ searchButton.addEventListener('click', function getCity() {
         });
     });
 });
-
-
