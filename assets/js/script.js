@@ -110,12 +110,49 @@ searchButton.addEventListener('click', function getCity() {
             return response.json();
         })
         .then(function(data) {
+            // Forecast Variables
+            var day1Time = moment().utcOffset(data.timezone / 60).add(1,"d").format("M/D/YY");
+            var day2Time = moment().utcOffset(data.timezone / 60).add(2,"d").format("M/D/YY");
+            var day3Time = moment().utcOffset(data.timezone / 60).add(3,"d").format("M/D/YY");
+            var day4Time = moment().utcOffset(data.timezone / 60).add(4,"d").format("M/D/YY");
+            var day5Time = moment().utcOffset(data.timezone / 60).add(5,"d").format("M/D/YY");
+            var day1Temp = data.list[7].main.temp;
+            var day2Temp = data.list[15].main.temp;
+            var day3Temp = data.list[23].main.temp;
+            var day4Temp = data.list[31].main.temp;
+            var day5Temp = data.list[39].main.temp;
+            var day1Humi = data.list[7].main.humidity;
+            var day2Humi = data.list[15].main.humidity;
+            var day3Humi = data.list[23].main.humidity;
+            var day4Humi = data.list[31].main.humidity;
+            var day5Humi = data.list[39].main.humidity;
+            var day1Icon = data.list[7].weather[0].icon;
+            var day2Icon = data.list[15].weather[0].icon;
+            var day3Icon = data.list[23].weather[0].icon;
+            var day4Icon = data.list[31].weather[0].icon;
+            var day5Icon = data.list[39].weather[0].icon;
 
-            console.log(data.list[7]);
-            console.log(data.list[15]);
-            console.log(data.list[23]);
-            console.log(data.list[31]);
-            console.log(data.list[39]);
+            // Insert HTML
+            document.getElementById("day1-date").innerHTML = day1Time;
+            document.getElementById("day2-date").innerHTML = day2Time;
+            document.getElementById("day3-date").innerHTML = day3Time;
+            document.getElementById("day4-date").innerHTML = day4Time;
+            document.getElementById("day5-date").innerHTML = day5Time;
+            document.getElementById("day1-temp").innerHTML = day1Temp;
+            document.getElementById("day2-temp").innerHTML = day2Temp;
+            document.getElementById("day3-temp").innerHTML = day3Temp;
+            document.getElementById("day4-temp").innerHTML = day4Temp;
+            document.getElementById("day5-temp").innerHTML = day5Temp;
+            document.getElementById("day1-humi").innerHTML = day1Humi;
+            document.getElementById("day2-humi").innerHTML = day2Humi;
+            document.getElementById("day3-humi").innerHTML = day3Humi;
+            document.getElementById("day4-humi").innerHTML = day4Humi;
+            document.getElementById("day5-humi").innerHTML = day5Humi;
+            document.getElementById("day1-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day1Icon + "@2x.png");
+            document.getElementById("day2-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day2Icon + "@2x.png");
+            document.getElementById("day3-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day3Icon + "@2x.png");
+            document.getElementById("day4-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day4Icon + "@2x.png");
+            document.getElementById("day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
         });
     });
 });

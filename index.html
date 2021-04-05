@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-    <title>Weather Dashboard</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+  <title>Weather Dashboard</title>
 </head>
 <body class="g-0">
-    <header class="container-fluid bg-dark">
-        <h1 class="text-center text-light p-3">Weather Dashboard</h1>
-    </header>
-    <main class="container">
-        <div class="row">
-            <div class="col-lg-4 bg-light">
-                <h4>Search for a City:</h4>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="San Franciso" aria-label="city" aria-describedby="button-search" id="input-field">
-                    <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
-                </div>
-                <div class="d-grid gap-2 m-4" id="cityHistory">
-                    <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
-                    <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
-                    <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
-                </div>
-            </div>
-            <div class="col-lg-8 bg-transparent" id="selected-city">
-                <div class="container">
-
-                    <div class="card bg-dark text-white m-3" id="main-card">
-                      <img src="./assets/images/clear_sky.jpeg" class="card-img" id="current-weather-image" alt="Image of current weather">
-                      <div class="card-img-overlay">
-                        <h5 class="card-title"><span id="city-date"></span></h5>
-                        <p class="card-text">Temperature: <span id="main-temp"></span> °F</p>
-                        <p class="card-text">Humidity: <span id="main-humidity"></span>%</p>
-                        <p class="card-text">Wind Speed: <span id="main-wind"></span> MPH</p>
-                        <p class="card-text">UV Index : <span id="main-uv"></span></p>
-                      </div>
-                    </div>
-
-                </div>
-                <div class="container">
-                    <h3 class="mx-3">5-Day Forecast</h3>
-                    <div class="card-group m-3">
-
-                      <div class="card">
-                        <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
-
-                        </div>
-                      </div>
-
-                      <div class="card">
-                        <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
-
-                        </div>
-                      </div>
-
-                      <div class="card">
-                        <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
-
-                        </div>
-                      </div>
-
-                      <div class="card">
-                          <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
-
-                          </div>
-                      </div>
-
-                      <div class="card">
-                          <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sodales dui. Nullam in molestie lorem.</p>
-
-                          </div>
-                      </div>
-
-                    </div>
-                </div>
-            </div>
+  <header class="container-fluid bg-dark">
+    <h1 class="text-center text-light p-3">Weather Dashboard</h1>
+  </header>
+  <main class="container">
+    <div class="row">
+      <div class="col-lg-3 bg-light">
+        <h4>Search for a City:</h4>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="San Franciso" aria-label="city" aria-describedby="button-search" id="input-field">
+            <button class="btn btn-outline-secondary" type="button" id="button-search">Search</button>
         </div>
-    </main>
+        <div class="d-grid gap-2 m-4" id="cityHistory">
+            <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
+            <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
+            <button type="button" class="btn btn-light btn-outline-secondary">TEST</button>
+        </div>
+      </div>
+      <div class="col-lg-9 bg-transparent" id="selected-city">
+        <div class="container">
+
+          <div class="card bg-dark text-white m-3" id="main-card">
+            <img src="./assets/images/clear_sky.jpeg" class="card-img" id="current-weather-image" alt="Image of current weather">
+            <div class="card-img-overlay">
+              <h5 class="card-title"><span id="city-date"></span></h5>
+              <p class="card-text">Temperature: <span id="main-temp"></span> °F</p>
+              <p class="card-text">Humidity: <span id="main-humidity"></span>%</p>
+              <p class="card-text">Wind Speed: <span id="main-wind"></span> MPH</p>
+              <p class="card-text">UV Index : <span id="main-uv"></span></p>
+            </div>
+          </div>
+
+        </div>
+        <div class="container">
+          <h3 class="mx-3">5-Day Forecast</h3>
+          <div class="card-group m-3">
+
+            <div class="card bg-light">
+              <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" id="day1-icon" alt="Icon for Day 1">
+              <div class="card-body">
+                <h5 class="card-title"><span id="day1-date"></span></h5>
+                <p class="card-text">Temp: <span id="day1-temp"></span> °F</p>
+                <p class="card-text">Humidity: <span id="day1-humi"></span>%</p>
+              </div>
+            </div>
+
+            <div class="card bg-light">
+              <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" id="day2-icon" alt="Icon for Day 2">
+              <div class="card-body">
+                <h5 class="card-title"><span id="day2-date"></span></h5>
+                <p class="card-text">Temp: <span id="day2-temp"></span> °F</p>
+                <p class="card-text">Humidity: <span id="day2-humi"></span>%</p>
+              </div>
+            </div>
+
+            <div class="card bg-light">
+              <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" id="day3-icon" alt="Icon for Day 3">
+              <div class="card-body">
+                <h5 class="card-title"><span id="day3-date"></span></h5>
+                <p class="card-text">Temp: <span id="day3-temp"></span> °F</p>
+                <p class="card-text">Humidity: <span id="day3-humi"></span>%</p>
+              </div>
+            </div>
+
+            <div class="card bg-light">
+              <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" id="day4-icon" alt="Icon for Day 4">
+              <div class="card-body">
+                <h5 class="card-title"><span id="day4-date"></span></h5>
+                <p class="card-text">Temp: <span id="day4-temp"></span> °F</p>
+                <p class="card-text">Humidity: <span id="day4-humi"></span>%</p>
+              </div>
+            </div>
+
+            <div class="card bg-light">
+              <img src="./assets/images/thunderstorm.jpeg" class="card-img-top" id="day5-icon" alt="Icon for Day 5">
+              <div class="card-body">
+                <h5 class="card-title"><span id="day5-date"></span></h5>
+                <p class="card-text">Temp: <span id="day5-temp"></span> °F</p>
+                <p class="card-text">Humidity: <span id="day5-humi"></span>%</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 
 <script src="./assets/js/script.js"></script>
