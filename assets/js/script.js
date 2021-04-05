@@ -26,6 +26,12 @@ function imageWeather (icon) {
     };
 };
 
+// Initialize
+function init() {
+    document.getElementById("selected-city").style.setProperty("visibility", "hidden");
+};
+init();
+
 // WORK
 searchButton.addEventListener('click', function getCity() {
     // Pointers (locally)
@@ -38,7 +44,13 @@ searchButton.addEventListener('click', function getCity() {
     fetch(requestUrl)
     .then(function(response) {
         console.log(response);
-        return response.json();
+        if (response.status == 200) {
+            document.getElementById("selected-city").style.setProperty("visibility", "initial");
+            return response.json();
+        } else {
+            document.getElementById("selected-city").style.setProperty("visibility", "hidden");
+            return;
+        };
     })
     .then(function(data) {
         // Weather Variables
@@ -59,12 +71,29 @@ searchButton.addEventListener('click', function getCity() {
             return response.json();
         })
         .then(function(data) {
-            // UV Variable
+            // Update UVI Related Information
             var mainUV = data.current.uvi;
+            document.getElementById("main-uv").innerHTML = mainUV;
 
-            console.log(mainUV);
+            if (mainUV <= 2) {
+                document.getElementById("main-uv").style.setProperty("background-color", "rgb(67,185,30)");
+
+            } else if (mainUV <= 5) {
+                document.getElementById("main-uv").style.setProperty("background-color", "rgb(252,199,33)");
+
+            } else if (mainUV <= 7) {
+                document.getElementById("main-uv").style.setProperty("background-color", "rgb(251,116,27)");
+
+            } else if (mainUV <= 10) {
+                document.getElementById("main-uv").style.setProperty("background-color", "rgb(248,17,22)");
+
+            } else {
+                document.getElementById("main-uv").style.setProperty("background-color", "rgb(134,111,255)");
+
+            };
         });
 
+        // Update Html Elements
         cityTitle.innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
         currentImg.setAttribute("src", imageWeather(mainImg));
         document.getElementById("main-temp").innerHTML = mainTemp;
