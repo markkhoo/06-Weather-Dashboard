@@ -30,14 +30,11 @@ function init() {
 };
 init();
 
-// Click on Search
-searchButton.addEventListener('click', function getCity() {
-
-    // Get input value to lowercase
-    var inputField = document.getElementById('input-field').value.toLowerCase();
+// Fetching Function
+function fetchingInfo (citySearch) {
 
     // Fetch Sequence for Main Weather
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputField + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + citySearch + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
 
     fetch(requestUrl)
     .then(function(response) {
@@ -52,14 +49,14 @@ searchButton.addEventListener('click', function getCity() {
             if (storedSearches !== null ) {
 
                 // Checks if input already exists in stored searches
-                if (!(storedSearches.includes(inputField))) {
-                    storedSearches.push(inputField);
+                if (!(storedSearches.includes(citySearch))) {
+                    storedSearches.push(citySearch);
                     localStorage.setItem("allSearches", JSON.stringify(storedSearches));
                 };
             } else {
 
                 // Inputs City in there is no search history
-                var firstCity = [inputField];
+                var firstCity = [citySearch];
                 localStorage.setItem("allSearches", JSON.stringify(firstCity));
             };
 
@@ -106,7 +103,7 @@ searchButton.addEventListener('click', function getCity() {
             };
 
             // Update Html Elements for Current Weather
-            document.getElementById('city-date').innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
+            document.getElementById('city-date').innerHTML = citySearch.toUpperCase() + " (" + currentTime + ")";
             document.getElementById('current-weather-image').setAttribute("src", imageWeather(mainIcon));
             document.getElementById("main-temp").innerHTML = mainTemp;
             document.getElementById("main-humidity").innerHTML = mainHumidity;
@@ -116,7 +113,7 @@ searchButton.addEventListener('click', function getCity() {
         });
 
         // Fetch Sequence for 5-Day Forecast
-        var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + inputField + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
+        var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySearch + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
 
         fetch(forecastUrl)
         .then(function(response) {
@@ -168,5 +165,15 @@ searchButton.addEventListener('click', function getCity() {
             document.getElementById("day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
         });
     });
+};
 
+
+
+// Click on Search
+searchButton.addEventListener('click', function getCity() {
+
+    // Get input value to lowercase
+    var inputField = document.getElementById('input-field').value.toLowerCase();
+
+    fetchingInfo(inputField);
 });
