@@ -24,11 +24,28 @@ function imageWeather (icon) {
     };
 };
 
-// Initialize
-function init() {
-    document.getElementById("selected-city").style.setProperty("visibility", "hidden");
+// Display Previously Searched Cities
+function displaySearched () {
+
+    // Store City Searches
+    var storedSearches = JSON.parse(localStorage.getItem("allSearches"));
+
+    // Clear Buttons
+    document.getElementById("cityHistory").innerHTML = "";
+
+    // Checks is stored City Searches exist or not
+    if (storedSearches !== null) {
+
+        for (var i = 0; i < storedSearches.length; i++) {
+           
+            // Create Buttons
+            var cityButton = document.createElement("button");
+            cityButton.innerHTML = storedSearches[i];
+            cityButton.setAttribute("class", "btn btn-light btn-outline-secondary");
+            document.getElementById("cityHistory").appendChild(cityButton);
+        };
+    };
 };
-init();
 
 // Fetching Function
 function fetchingInfo (citySearch) {
@@ -110,6 +127,9 @@ function fetchingInfo (citySearch) {
             document.getElementById("main-wind").innerHTML = mainWind;
             document.getElementById("main-uv").innerHTML = mainUV;
             document.getElementById("main-icon").setAttribute("src","http://openweathermap.org/img/wn/" + mainIcon + "@2x.png");
+
+            // Update Buttons
+            displaySearched();
         });
 
         // Fetch Sequence for 5-Day Forecast
@@ -167,7 +187,12 @@ function fetchingInfo (citySearch) {
     });
 };
 
-
+// Initialize
+function init() {
+    document.getElementById("selected-city").style.setProperty("visibility", "hidden");
+    displaySearched();
+};
+init();
 
 // Click on Search
 searchButton.addEventListener('click', function getCity() {
