@@ -1,5 +1,6 @@
 // Pointers
 var searchButton = document.getElementById('button-search');
+var historyTray = document.getElementById('cityHistory');
 
 // Card Image Function
 function imageWeather (icon) {
@@ -201,4 +202,19 @@ searchButton.addEventListener('click', function getCity() {
     var inputField = document.getElementById('input-field').value.toLowerCase();
 
     fetchingInfo(inputField);
+});
+
+// Click on History Buttons
+historyTray.addEventListener('click', function(event) {
+    event.stopPropagation();
+
+    // Get value from button
+    currentElement = event.target;
+
+    var storedSearches = JSON.parse(localStorage.getItem("allSearches"));
+
+    // If statement prevent the click event doing work when button margins are clicked
+    if (storedSearches.includes(currentElement.innerHTML)) {
+        fetchingInfo(currentElement.innerHTML);
+    }
 });
