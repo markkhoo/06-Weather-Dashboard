@@ -30,13 +30,11 @@ function init() {
 };
 init();
 
-// WORK
+// Click on Search
 searchButton.addEventListener('click', function getCity() {
 
-    // Pointers (locally)
-    var cityTitle = document.getElementById('city-date');
-    var currentImg = document.getElementById('current-weather-image');
-    var inputField = document.getElementById('input-field').value;
+    // Get input value to lowercase
+    var inputField = document.getElementById('input-field').value.toLowerCase();
 
     // Fetch Sequence for Main Weather
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + inputField + "&units=imperial&appid=22bb6e2db366aab8539ac22df7b32d3a";
@@ -78,7 +76,7 @@ searchButton.addEventListener('click', function getCity() {
         var currentLat = data.coord.lat;
         var currentLon = data.coord.lon;
         var currentTime = moment().utcOffset(data.timezone / 60).format("M/D/YYYY");
-        var mainImg = data.weather[0].icon;
+        var mainIcon = data.weather[0].icon;
         var mainTemp = data.main.temp;
         var mainHumidity = data.main.humidity;
         var mainWind = data.wind.speed;
@@ -91,9 +89,8 @@ searchButton.addEventListener('click', function getCity() {
             return response.json();
         })
         .then(function(data) {
-            // Update UVI Related Information
+            // Get UVI from data
             var mainUV = data.current.uvi;
-            document.getElementById("main-uv").innerHTML = mainUV;
 
             // Update UVI color block
             if (mainUV <= 2) {
@@ -109,12 +106,13 @@ searchButton.addEventListener('click', function getCity() {
             };
 
             // Update Html Elements for Current Weather
-            cityTitle.innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
-            currentImg.setAttribute("src", imageWeather(mainImg));
+            document.getElementById('city-date').innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
+            document.getElementById('current-weather-image').setAttribute("src", imageWeather(mainIcon));
             document.getElementById("main-temp").innerHTML = mainTemp;
             document.getElementById("main-humidity").innerHTML = mainHumidity;
             document.getElementById("main-wind").innerHTML = mainWind;
-
+            document.getElementById("main-uv").innerHTML = mainUV;
+            document.getElementById("main-icon").setAttribute("src","http://openweathermap.org/img/wn/" + mainIcon + "@2x.png");
         });
 
         // Fetch Sequence for 5-Day Forecast

@@ -1,13 +1,13 @@
+#main-card {
+    text-shadow: 0 0 2px #000000, 0 0 4px #000000, 0 0 8px #000000;
+}
+
 #main-uv {
     display: inline-block;
     text-align: center;
     border-radius: 8px;
     padding: 4px;
     min-width: 40px;
-}
-
-#main-card {
-    text-shadow: 0 0 2px #000000, 0 0 4px #000000, 0 0 8px #000000;
 }
 
 @media screen and (max-width: 992px) {
