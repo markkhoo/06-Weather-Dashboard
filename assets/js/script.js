@@ -46,6 +46,26 @@ searchButton.addEventListener('click', function getCity() {
 
         // Status check for inputed city
         if (response.status == 200) {
+
+            // Store City Searches
+            var storedSearches = JSON.parse(localStorage.getItem("allSearches"));
+
+            // Checks is stored City Searches exist or not
+            if (storedSearches !== null ) {
+
+                // Checks if input already exists in stored searches
+                if (!(storedSearches.includes(inputField))) {
+                    storedSearches.push(inputField);
+                    localStorage.setItem("allSearches", JSON.stringify(storedSearches));
+                };
+            } else {
+
+                // Inputs City in there is no search history
+                var firstCity = [inputField];
+                localStorage.setItem("allSearches", JSON.stringify(firstCity));
+            };
+
+            // Make Weather Visible
             document.getElementById("selected-city").style.setProperty("visibility", "initial");
             return response.json();
         } else {
@@ -88,7 +108,7 @@ searchButton.addEventListener('click', function getCity() {
                 document.getElementById("main-uv").style.setProperty("background-color", "rgb(134,111,255)");
             };
 
-            // Update Html Elements
+            // Update Html Elements for Current Weather
             cityTitle.innerHTML = inputField.toUpperCase() + " (" + currentTime + ")";
             currentImg.setAttribute("src", imageWeather(mainImg));
             document.getElementById("main-temp").innerHTML = mainTemp;
@@ -127,7 +147,7 @@ searchButton.addEventListener('click', function getCity() {
             var day4Icon = data.list[31].weather[0].icon;
             var day5Icon = data.list[39].weather[0].icon;
 
-            // Insert HTML
+            // Update HTML Elements for Forecast
             document.getElementById("day1-date").innerHTML = day1Time;
             document.getElementById("day2-date").innerHTML = day2Time;
             document.getElementById("day3-date").innerHTML = day3Time;
@@ -150,4 +170,5 @@ searchButton.addEventListener('click', function getCity() {
             document.getElementById("day5-icon").setAttribute("src", "http://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
         });
     });
+
 });
